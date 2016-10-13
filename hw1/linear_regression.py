@@ -2,13 +2,9 @@ import csv
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-X = np.load('data/X.npy')
-Y_ = np.load('data/Y_.npy')
-V = np.load('data/V.npy')
-Y_v = np.load('data/Y_v.npy')
-T = np.load('data/T.npy')
-# file = open('data/train.csv','r',encoding='big5')
-# X,Y_,V,Y_v,T = rd.almost_concat_remove_parameter(file,0)
+import read_data as rd
+file = open('data/train.csv','r',encoding='big5')
+X,Y_,V,Y_v,T = rd.almost_concat_remove_parameter(file,0)
 num_W = X.shape[1]
 W = np.zeros(num_W,dtype='float32')
 print('successffuly load X,Y_,V,Y_v,T !')
@@ -16,7 +12,7 @@ print('=========start====training!=====')
 
 lr = 0.0000016 #*np.array([10,5,1.8,1.5,1.0,0.1])#float(sys.argv[1])#0.0001
 # lamda = [0,10,50,200,1000]#float(sys.argv[1])#10
-Epoch =600000#35
+Epoch =100000#35
 # sum_g = 0
 plt.figure(1)
 loss_list=[]
@@ -40,19 +36,6 @@ for i in range(Epoch):
     # sum_g+=np.square(Grad)
     W = W - lr*Grad  #(lr/np.sqrt(sum_g))*Grad
 print('\n',loss_list[-1],vali_list[-1])
-'''
-plt.plot(index,loss_list,'-r',label='training_loss')
-plt.plot(index,vali_list,'-b',label='vali_loss')
-e = vali_list.index(min(vali_list))
-plt.plot(index[e],vali_list[e],'o')
-plt.xlabel('epoch (*1000)')
-plt.ylabel('distance loss')
-# plt.ylim(3,30)
-# plt.title('Validation loss with different learning_rate')
-plt.legend()
-# plt.savefig('output/Validation loss with difference lamda.png')
-plt.savefig('output/visual_remove_parameter.png')
-'''
 print('End Training!')
 print('=============')
 
@@ -60,7 +43,7 @@ W_ = np.dot(np.linalg.pinv(X),Y_)
 print('pinv answer',np.sqrt((np.linalg.norm(Y_-np.dot(X,W_))**2)/ len(X)))
 
 print('retrain!!!!!')
-Epoch = 200000
+Epoch = 100000
 X = np.concatenate((X,V),axis=0)
 Y_ = np.concatenate((Y_,Y_v),axis=0)
 for i in range(Epoch):
@@ -97,13 +80,6 @@ for i in range(240):
     an = ((np.dot(T[i],W)))
     An.append(an)
     file3.write('id_'+str(i)+','+str(an)+'\n')
-'''
-file4 = open ('output/correct.csv','r')
-for row in file4:
-    Cor.append(float(row))
-err =np.sqrt( np.linalg.norm(np.array(An)-np.array(Cor))**2 / len(An))
-print('err = %f'%(err))
-'''
 # file_o = open('data/W_see.txt','w')
 
 # for i in range(len(W_see)):
