@@ -14,7 +14,7 @@ lr = 0.0000016 #*np.array([10,5,1.8,1.5,1.0,0.1])#float(sys.argv[1])#0.0001
 # lamda = [0,10,50,200,1000]#float(sys.argv[1])#10
 Epoch =100000#35
 # sum_g = 0
-plt.figure(1)
+# plt.figure(1)
 loss_list=[]
 vali_list=[]
 index = []
