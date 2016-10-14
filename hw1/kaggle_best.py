@@ -75,9 +75,4 @@ for i in range(240):
     An.append(an)
     file3.write('id_'+str(i)+','+str(an)+'\n')
 
-file4 = open ('data/correct.csv','r')
-for row in file4:
-    Cor.append(float(row))
-err =np.sqrt( np.linalg.norm(np.array(An)-np.array(Cor))**2 / len(An))
-print('err = %f'%(err))
 
