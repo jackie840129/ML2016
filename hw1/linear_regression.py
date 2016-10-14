@@ -1,12 +1,12 @@
 import csv
-import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import read_data as rd
 file = open('data/train.csv','r',encoding='big5')
 X,Y_,V,Y_v,T = rd.almost_concat_remove_parameter(file,0)
 num_W = X.shape[1]
-W = np.zeros(num_W,dtype='float32')
+W = np.dot(np.linalg.pinv(X),Y_)
+# W = np.zeros(num_W,dtype='float32')
 print('successffuly load X,Y_,V,Y_v,T !')
 print('=========start====training!=====')
 

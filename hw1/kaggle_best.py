@@ -9,14 +9,15 @@ V = np.load('data/V_b.npy')
 Y_v = np.load('data/Y_vb.npy')
 T = np.load('data/T.npy')
 num_W = X.shape[1]
-W = np.zeros(num_W,dtype='float32')
+W = np.dot(np.linalg.pinv(X),Y_)
+# W = np.zeros(num_W,dtype='float32')
 print('successffuly load X,Y_,V,Y_v,T !')
 print('X shape,Y_shape,V shape,Y_v shape, Test shape')
 print(X.shape,Y_.shape,V.shape,Y_v.shape,T.shape)
 print('=========start====training!=====')
-print('lr = ',0.0000016,' Epoch = 300000')
+print('lr = ',0.0000016,' Epoch = 200000')
 lr = 0.0000016 
-Epoch =300000#35
+Epoch =10000#35
 loss_list=[]
 vali_list=[]
 index = []
@@ -42,7 +43,7 @@ print('=============')
 
 print('retrain!!!!!')
 Epoch = 50000
-print('Epoch=50000')
+print('Epoch=100000')
 print(X.shape,Y_.shape)
 X = np.concatenate((X,V),axis=0)
 Y_ = np.concatenate((Y_,Y_v),axis=0)
