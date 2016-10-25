@@ -1,5 +1,4 @@
 import csv
-import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
@@ -14,7 +13,6 @@ for  row in csv.reader(file):
 X = np.array(X).astype('float32')
 Y_ = np.array(Y_).astype('float32')
 index = np.load('index.npy')
-print(index)
 Valid = X[index[-400:]]
 X = X[index[:-400]]
 V_y = Y_[index[-400:]]
@@ -92,11 +90,12 @@ for i in range(Epoch):
     Adam['v'] = beta2*Adam['v']+(1-beta2)*Grad*Grad
     W = W - Adam['lr']*Adam['m']/(np.sqrt(Adam['v'])+epsilon)
 
-
+ind = 0
+for i in range(len(model_name)):
+    if model_name[i]=='.':
+        ind = i
+if ind != 0:
+    model_name = model_name[:ind]
 np.save(str(model_name)+'.npy',W)
-an_Y =( (1.0/(1.0+np.exp(-np.dot(X,W))))+0.5).astype('int').astype('float32')
-
-acc = 1-np.mean(np.abs(Y-an_Y))
-print(acc)
 file.close()
 
