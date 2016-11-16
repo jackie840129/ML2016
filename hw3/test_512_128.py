@@ -15,6 +15,8 @@ from keras.layers.normalization import BatchNormalization
 # config = tf.ConfigProto()
 # config.gpu_options.per_process_gpu_memory_fraction = 0.9
 # set_session(tf.Session(config=config))
+from keras import backend as K
+K.set_image_dim_ordering('tf')
 data_path = sys.argv[1]
 model_path = sys.argv[2]
 output_path = sys.argv[3]
