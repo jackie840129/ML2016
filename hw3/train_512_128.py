@@ -40,7 +40,7 @@ Train,T_label,Valid,V_label = dp.split_valid(l_data,label,ratio=0.1,is_seed=Fals
 def construct_model():
 
     model = Sequential()
-    model.add(Convolution2D(64, 3, 3, border_mode='same',input_shape=(32,32,3)))
+    model.add(Convolution2D(64, 3, 3, border_mode='same',input_shape=(32,32,3),dim_ording='tf'))
     model.add(BatchNormalization())
     model.add(elu)
     model.add(Convolution2D(64, 3,3))

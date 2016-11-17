@@ -35,6 +35,6 @@ def IG(ro=20,w=0.1,h=0.1,s=0,z=0):
         shear_range=s,
         zoom_range=z,
         horizontal_flip=True,
-        fill_mode='nearest')
+        fill_mode='nearest',dim_ordering='tf')
     return datagen
 
