@@ -1,1 +1,1 @@
-python3 DNN_test.py $1 $2 $3
+KERAS_BACKEND=tensorflow python3 DNN_test.py $1 $2 $3
