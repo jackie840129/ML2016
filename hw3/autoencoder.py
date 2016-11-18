@@ -6,6 +6,8 @@ from keras.optimizers import Adamax ,RMSprop
 import keras.backend.tensorflow_backend
 import data_preprocessing as dp
 import cifar_data as cd
+from keras import backend as K
+K.set_image_dim_ordering('tf')
 
 path = sys.argv[1]
 print('load pickle....')

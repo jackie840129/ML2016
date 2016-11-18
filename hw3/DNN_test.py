@@ -4,6 +4,8 @@ import sys
 from keras.models import load_model
 import tensorflow as tf
 import cifar_data as cd
+from keras import backend as K
+K.set_image_dim_ordering('tf')
 
 path = sys.argv[1]
 model = sys.argv[2]

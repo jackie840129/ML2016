@@ -11,10 +11,12 @@ from keras.models import load_model
 import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 import cifar_data as cd
+from keras import backend as K
+K.set_image_dim_ordering('tf')
 
-config = tf.ConfigProto()
-config.gpu_options.per_process_gpu_memory_fraction = 0.3
-set_session(tf.Session(config=config))
+# config = tf.ConfigProto()
+# config.gpu_options.per_process_gpu_memory_fraction = 0.3
+# set_session(tf.Session(config=config))
 
 
 mc_path = sys.argv[2]   # './DNN.h5'
