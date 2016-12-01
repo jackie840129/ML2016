@@ -22,7 +22,7 @@ output_name = str(sys.argv[2])
 tokenizer = RegexpTokenizer(r'\w+')
 stemmer = SnowballStemmer("english",ignore_stopwords=True)
 
-file = open(directory+'/title_StackOverflow.txt','r')
+file = open(directory+'title_StackOverflow.txt','r')
 corpus = []
 stop = set(stopwords.words('english'))
 def stem_tokens(tokens, stemmer):
@@ -65,7 +65,7 @@ print('%.2f seconds'%(time()-t0))
 answer = km.labels_
 
 firstrow = True
-file = open(directory+'/check_index.csv','r')
+file = open(directory+'check_index.csv','r')
 file2 = open(output_name,'w+')
 file2.write("ID,Ans\n")
 for row in csv.reader(file):
